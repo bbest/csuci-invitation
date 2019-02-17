@@ -1,0 +1,49 @@
+---
+title: "Environmental Data Science Lab - Highlights"
+output: 
+  flexdashboard::flex_dashboard:
+    storyboard: true
+---
+
+```{r setup, include=FALSE}
+library(flexdashboard)
+```
+
+### **Welcome** {data-commentary-width=400; #welcome}
+
+```{r}
+print("frame-1")
+```
+
+*** 
+
+Ahoy Mateys!
+
+[Page Two](#frame-3)
+
+Welcome to a reel of research highlights for Dr. Ben Best.
+
+https://vimeo.com/
+
+### Frame 2 {data-commentary-width=400; #frame2}
+
+```{r}
+print("frame-2")
+```
+
+*** 
+
+Some commentary about Frame 2.
+
+### Frame 3  {#frame3}
+
+```{r}
+print("frame-3")
+```
+
+*** 
+
+Some commentary about Frame 3. 
+
+
+

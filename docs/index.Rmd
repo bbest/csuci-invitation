@@ -1,0 +1,130 @@
+---
+title: "Environmental Data Science Lab - Highlights"
+output: 
+  flexdashboard::flex_dashboard:
+    storyboard: true
+    social: menu
+    source: embed
+    css: styles.css
+---
+
+```{r setup, include=FALSE}
+library(flexdashboard)
+```
+
+```{r}
+library(tidyverse)
+library(leaflet)
+library(mapview)
+library(mapedit)
+library(ggmap)
+library(sf)
+library(here)
+library(glue)
+library(fs)
+library(vembedr)
+
+# paths
+gkey_txt <- "~/private/google-maps-api-key_bdbest-csuci-invite.txt"
+pts_csv <- here("data/pts.csv")
+
+register_google(readLines(gkey_txt))
+
+# create pts_csv
+if (!file.exists(pts_csv)){
+  pts_df <- tribble(
+    ~place,
+    "California State University Channel Islands",
+    "Santa Barbara, CA") %>% 
+    mutate_geocode(place)
+  
+  write_csv(pts_df, pts_csv)
+}
+pts_df <- read_csv(pts_csv)
+
+# geocode any missing places
+pts_todo <- filter(pts_df, is.na(lon), is.na(lat))
+if (nrow(pts_todo)>0){
+  pts_df <- rbind(
+    pts_df %>% 
+      filter(!is.na(lon) & !is.na(lat)),
+    pts_todo %>% 
+      mutate_geocode(place))
+}
+
+# convert to points
+pts <- pts_df %>% 
+  st_as_sf(coords = c("lon", "lat"), crs=4326)
+```
+
+```{r mapedit, eval=F}
+# only run this R chunk to move markers
+pts <- editFeatures(places, label=~place)
+pts_df <- pts %>% 
+  mutate(
+    lon = st_coordinates(geometry)[1,],
+    lat = st_coordinates(geometry)[1,]) %>% 
+  st_drop_geometry()
+write_csv(pts_df, pts_csv)
+```
+
+### **Welcome** {data-commentary-width=400}
+
+```{r}
+leaflet(pts) %>% 
+  addProviderTiles(
+    providers$Stamen.Watercolor,
+    options = providerTileOptions(opacity=0.3)) %>% 
+  addMarkers(
+    label = ~ place)
+```
+
+*** 
+
+Ahoy Mateys!
+
+Welcome to a reel of research highlights for Dr. Ben Best.
+
+```{r}
+vembedr::embed_vimeo(178485416, width=382)
+```
+
+
+https://vimeo.com/
+
+### **Route** ships around whale hotspots {data-commentary-width=400}
+
+![](https://raw.githubusercontent.com/bbest/consmap/master/img/routing_animation.gif)
+
+*** 
+
+Some commentary about Frame 2.
+
+For more see [EcoQuants](https://ecoquants.com/app/routing/).
+
+```{r}
+shiny::absolutePanel(
+  leaflet(pts, width=382, height=200) %>% 
+    addProviderTiles(
+      providers$Stamen.Watercolor,
+      options = providerTileOptions(opacity=0.3)) %>% 
+    addMarkers(
+      label = ~ place) %>% 
+    addMiniMap(
+      tiles = providers$Stamen.Watercolor,
+      toggleDisplay = TRUE), bottom=0)
+```
+
+
+### Frame 3  {#frame3}
+
+```{r}
+plot(1:10)
+```
+
+*** 
+
+Some commentary about Frame 3. 
+
+
+
