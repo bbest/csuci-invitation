@@ -1,5 +1,5 @@
 ---
-title: "Environmental Data Science Lab - Highlights"
+title: "Environmental Data Science Lab - Research Highlights"
 output: 
   flexdashboard::flex_dashboard:
     storyboard: true
@@ -24,6 +24,7 @@ library(here)
 library(glue)
 library(fs)
 library(vembedr)
+library(bsplus)
 source(here("functions.R"))
 
 # paths
@@ -44,19 +45,17 @@ map_all(pts)
 
 *** 
 
-Rrrrr! Ahoy Mateys! I be talking like a pirate to try and 'hook' you into using the scientific programming language **R** for applying _**data science**_ to _**environmental**_ problem solving.
-
-On the map are a few places I'll demonstrate how I applied spatial and statistical techniques to report and solve environmental issues, particularly in the oceans.
-
-I made this little highlights site using Rmarkdown:
+Ahoy Mateys! I be talking like a pirate because I use the scientific programming language **R** to solve _**environmental problems**_, and I want to get you _hooked_ on _**data science**_.
 
 ```{r}
-embed_vimeo(178485416, width=382)
+embed_youtube("AG4YGh1FjFc", width=382)
 ```
+
+Here are few highlights of research I do on this site.
 
 ### **Route** ships around whale hotspots {data-commentary-width=400}
 
-![](https://raw.githubusercontent.com/bbest/consmap/master/img/routing_animation.gif)
+<iframe style="position: absolute; width: 100%; height: 100%; border: none" src='http://shiny.env.duke.edu/bbest/siting/'></iframe>
 
 *** 
 
@@ -76,9 +75,23 @@ map_feature("routing")
 
 *** 
 
+```{r}
+#file.exists(here("docs/modal/siting_framework.md"))
+
+md = "siting_framework"
+
+bs_modal(
+  id = "siting_framework", title = "Siting Framework",
+  size = "large",
+  body = includeMarkdown(here("docs/modal/siting_framework.md")))
+
+bs_button("Siting framework", button_type = "primary") %>%
+  bs_attach_modal("siting_framework")
+```
+
 tags: #renewable-energy #decision-framework #whales #birds
 
-### **Ocean Health Index** {data-commentary-width=200} 
+### Calculate **Ocean Health Index** globally {data-commentary-width=200} 
 
 <iframe style="position: absolute; width: 100%; height: 100%; border: none" src='https://ecoquants.shinyapps.io/ohi-global/'></iframe>
 
@@ -90,17 +103,29 @@ Click on a country to freeze the flower plot to that country in the upper right 
 
 tags: #decision-framework #whales #birds
 
-### **Sustainable Development Goal 14** {data-commentary-width=200} 
+### Predict **cetacean densities** based on habitat {data-commentary-width=200} 
+
+<iframe style="position: absolute; width: 100%; height: 100%; border: none" src='https://www.arcgis.com/apps/MapJournal/index.html?appid=0ac67160a23f45f6859401786f8bf94b'></iframe>
+
+*** 
+
+[Habitat-based cetacean density models for the U.S. Atlantic and Gulf of Mexico | Duke MGEL](http://seamap.env.duke.edu/models/Duke-EC-GOM-2015/)
+
+Citation: Roberts JJ, Best BD, Mannocci L, Fujioka E, Halpin PN, Palka DL, Garrison LP, Mullin KD, Cole TVN, Khan CB, McLellan WM, Pabst DA, Lockhart GG (2016) [Habitat-based cetacean density models for the U.S. Atlantic and Gulf of Mexico](http://www.nature.com/articles/srep22615). _Scientific Reports_ 6: 22615. doi: 10.1038/srep22615. (Download)
+
+tags: #sdg14 #decision-framework #whales #birds
+
+### Report on UN SDG14 **Life in the Sea** {data-commentary-width=200} 
 
 <iframe style="position: absolute; width: 100%; height: 100%; border: none" src='https://ecoquants.shinyapps.io/ohi-global/'></iframe>
 
 *** 
 
-**Sustainable Development Goal 14** Life in the Sea
+The United Nation's **Sustainable Development Goal 14** Life in the Sea
 
 tags: #sdg14 #decision-framework #whales #birds
 
-### **Ship Cards** {data-commentary-width=200} 
+### Monitor **ship speeds** to avoid whale strikes {data-commentary-width=200} 
 
 <iframe style="position: absolute; width: 100%; height: 100%; border: none" src='http://ecoquants.com/ship-cards/'></iframe>
 
@@ -118,7 +143,15 @@ map_all(pts)
 
 *** 
 
-To explore further:
+Here are a couple of the tools I use in R to create apps and generate reports.
+
+#### Rmarkdown reports
+
+```{r}
+embed_vimeo(178485416, width=382)
+```
+
+#### Shiny applications
 
 ```{r}
 vembedr::embed_vimeo(97466638, width=382)

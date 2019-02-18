@@ -1,3 +1,7 @@
+library(leaflet)
+library(htmltools)
+library(markdown)
+
 map_feature <- function(key){
   pt <- filter(pts, key == !!key)
   
@@ -23,11 +27,21 @@ map_feature <- function(key){
 }
 
 map_all <- function(pts){
+  
+  md_to_html <- function(md){
+    if(is.na(md)) md = "NA"
+    HTML(markdownToHTML(text= md, fragment.only=T))
+  }
+  
+  pts = pts %>% 
+    mutate(
+      content = map_chr(project_title, md_to_html))
+  
   leaflet(pts) %>% 
     addProviderTiles(
       providers$Stamen.Watercolor,
       options = providerTileOptions(
         opacity=0.3)) %>% 
-    addMarkers(
-      label = ~ place)
+    addMarkers(popup = ~content) %>% 
+    addPopups(popup = ~content)
 }
