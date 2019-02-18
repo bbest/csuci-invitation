@@ -19,7 +19,35 @@ print("frame-1")
 
 Ahoy Mateys!
 
-[Page Two](#frame-3)
+```{r}
+library(tidyverse)
+library(leaflet)
+library(mapview)
+library(mapedit)
+library(sf)
+library(here)
+library(glue)
+library(fs)
+library(vembedr)
+library(bsplus)
+source(here("functions.R"))
+
+#file.exists(here("docs/modal/siting_framework.md"))
+modal_parts <- function(id, size = "large"){
+  title = str_replace_all(id, "_", " ") %>% str_to_title()
+  path = here(glue("docs/modal/{id}.md"))
+  
+  if (!file.exists(path)) stop(glue("{md}: {path} does not exist!"))
+
+  list(id=id, title=title, path=path)
+}
+m <- modal_parts("siting_framework")
+bs_modal(id=m$id, title=m$title, size=m$size, body = includeMarkdown(m$path))
+bs_button(m$title, button_type = "primary") %>% bs_attach_modal(m$id)
+#}
+#globalenv()
+#btn_modal("siting_framework")
+```
 
 Welcome to a reel of research highlights for Dr. Ben Best.
 

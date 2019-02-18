@@ -5,3 +5,6 @@
 .storyboard-nav .sbframelist ul li {
     width: 180px;
 }
+
+.fa-stack { font-size: 0.7em; }
+i { vertical-align: middle; }

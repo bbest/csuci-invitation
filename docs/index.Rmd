@@ -25,6 +25,7 @@ library(glue)
 library(fs)
 library(vembedr)
 library(bsplus)
+#library(icon) # remotes::install_github("ropenscilabs/icon")
 source(here("functions.R"))
 
 # paths
@@ -37,7 +38,7 @@ pts <- read_csv(pts_csv) %>%
     crs=4326)
 ```
 
-### **Welcome** {data-commentary-width=400}
+### **Welcome** {data-commentary-width=318}
 
 ```{r map-all}
 map_all(pts)
@@ -48,60 +49,65 @@ map_all(pts)
 Ahoy Mateys! I be talking like a pirate because I use the scientific programming language **R** to solve _**environmental problems**_, and I want to get you _hooked_ on _**data science**_.
 
 ```{r}
-embed_youtube("AG4YGh1FjFc", width=382)
+embed_youtube("AG4YGh1FjFc", width=300)
 ```
 
 Here are few highlights of research I do on this site.
 
-### **Route** ships around whale hotspots {data-commentary-width=400}
+### **Route** ships around whale hotspots {data-commentary-width=318}
+
+<iframe style="position: absolute; width: 100%; height: 100%; border: none" src='http://shiny.env.duke.edu/bbest/routing'></iframe>
+
+*** 
+<center>
+![](https://ecoquants.com/images/app_routing_card_300x300_100dpi.png)
+</center>
+
+`r icon("info")` **Background**. With the possibility of an oil pipeline terminal being installed at Port Kittimat, oil tankers would transit the inner waters of British Columbia for the first time since the Exxon Valdez oil spill of 1989. Aggregating marine mammal density surfaces ([Best et al, 2015](https://archive.iwc.int/pages/terms.php?ref=5745&k=&search=%21collection15&url=pages%2Fdownload_progress.php%3Fref%3D5745%26ext%3Dpdf%26k%3D%26alternative%3D2515%26search%3D%2521collection15%26offset%3D0%26archive%3D0%26sort%3DDESC%26order_by%3Drelevance)) into a single cost surface, this least-cost routing algorithm provides alternative ship routes to avoid marine mammal hotspots.
+
+`r icon("rocket")` **Try it out**. Click on different points along the tradeoff curve to display the corresponding route in the map. Note the routes in the upper left are straighter (i.e. less wildlife aware) than the tortuous paths in the lower right (i.e. wildlife avoidant).
+
+### **Site** offshore wind energy responsibly {data-commentary-width=318}
 
 <iframe style="position: absolute; width: 100%; height: 100%; border: none" src='http://shiny.env.duke.edu/bbest/siting/'></iframe>
 
 *** 
 
-Some commentary about Frame 2.
+<center>
+![](https://ecoquants.com/images/app_siting_card_300x300_100dpi.png)
+</center>
 
-For more see [EcoQuants](https://ecoquants.com/app/routing/).
+`r icon("info")` **Background**. Development of offshore wind energy promises to reduce greenhouse gas emissions, but environmental compliance has been estimated to take 7-10 years and only one production facility exists in the U.S. (in Block Island, NJ). Seabirds can collide or be displaced by the long-term operation of wind turbines. In contrast, cetaceans are most effected by the acoustic impact of pile driving during construction. Using existing seabird densities and recently estimated cetacean density surfaces ([Roberts, Best et al 2016](http://www.nature.com/articles/srep22615)), this decision framework maps the overall utility of wind profitability versus bird sensitivity. Clicking on any given pixel in the map pops up the cetacean sensitivity over the year for that site, thus highlighting the optimal month of the year to pile drive.
 
-tags: #decision-framework #connectivity #whales
-
+<center>
 ```{r}
-map_feature("routing")
+modal_id("siting_framework")
+modal_btn("siting_framework")
 ```
+</center>
 
-### **Site** offshore wind energy responsibly
+`r icon("rocket")` **Try it out**. Hover your cursor over the tradeoff plot, get the lasso tool and select optimal sites in the upper right quadrant. For the now highlighted pixels on the map, click on one of the pixels to determine the best month to pile drive based on endangered whales and dolphins being least present.
 
-<iframe style="position: absolute; width: 100%; height: 100%; border: none" src='http://shiny.env.duke.edu/bbest/siting/'></iframe>
-
-*** 
-
-```{r}
-#file.exists(here("docs/modal/siting_framework.md"))
-
-md = "siting_framework"
-
-bs_modal(
-  id = "siting_framework", title = "Siting Framework",
-  size = "large",
-  body = includeMarkdown(here("docs/modal/siting_framework.md")))
-
-bs_button("Siting framework", button_type = "primary") %>%
-  bs_attach_modal("siting_framework")
-```
-
-tags: #renewable-energy #decision-framework #whales #birds
-
-### Calculate **Ocean Health Index** globally {data-commentary-width=200} 
+### Calculate **Ocean Health Index** globally {data-commentary-width=318}
 
 <iframe style="position: absolute; width: 100%; height: 100%; border: none" src='https://ecoquants.shinyapps.io/ohi-global/'></iframe>
 
 *** 
 
-The Ocean Health Index quantifies sustainable use of the oceans globally.
+<center>
+![](https://ecoquants.com/images/app_ohi_card_300x300_100dpi.png)
+</center>
 
-Click on a country to freeze the flower plot to that country in the upper right and explore the country goal scores in the flower plot.
+`r icon("info")` **Background**. The Ocean Health Index quantifies sustainable use of the oceans globally across 10 broad goals ([Halpern, ..., Best et al 2012](https://www.nature.com/articles/nature11397)). This application helps users visualize the many levels of information as maps, goals as petals in the flower plot, time series and tables.
 
-tags: #decision-framework #whales #birds
+<center>
+```{r}
+modal_id("ohi_framework")
+modal_btn("ohi_framework")
+```
+</center>
+
+`r icon("rocket")` **Try it out**. Click on a country to freeze the flower plot to that country in the upper right and explore the country goal scores in the flower plot.
 
 ### Predict **cetacean densities** based on habitat {data-commentary-width=200} 
 

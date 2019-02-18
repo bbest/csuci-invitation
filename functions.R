@@ -45,3 +45,32 @@ map_all <- function(pts){
     addMarkers(popup = ~content) %>% 
     addPopups(popup = ~content)
 }
+
+modal_parts <- function(id, size = "large"){
+  #id        = "siting_framework"
+  
+  title     = str_replace_all(id, "_", " ") %>% str_to_title()
+  btn_title = glue("View {title}")
+  path      = here(glue("docs/modal/{id}.md"))
+  
+  if (!file.exists(path)) stop(glue("{md}: {path} does not exist!"))
+  
+  list(id=id, title=title, btn_title=btn_title, path=path, size=size)
+}
+
+modal_id <- function(id){
+  m <- modal_parts(id)
+  bs_modal(id=m$id, title=m$title, size=m$size, body = includeMarkdown(m$path))
+}
+
+modal_btn <- function(id){
+  m <- modal_parts(id)
+  bs_button(m$btn_title, button_type = "primary") %>% bs_attach_modal(m$id)
+}
+
+icon <- function(icon){
+  glue('<span class="fa-stack">
+  <i class="fas fa-square fa-stack-2x"></i>
+       <i class="fas fa-{icon} fa-stack-1x fa-inverse"></i>
+       </span>')  
+}
