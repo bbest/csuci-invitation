@@ -4,93 +4,57 @@ output:
   flexdashboard::flex_dashboard:
     storyboard: true
     social: menu
-    source: embed
+    source_code: https://github.com/bbest/csuci-invite/blob/master/docs/index.Rmd
     css: styles.css
+editor_options: 
+  chunk_output_type: console
 ---
 
 ```{r setup, include=FALSE}
 library(flexdashboard)
 ```
 
-```{r}
+```{r load}
 library(tidyverse)
 library(leaflet)
 library(mapview)
 library(mapedit)
-library(ggmap)
 library(sf)
 library(here)
 library(glue)
 library(fs)
 library(vembedr)
+source(here("functions.R"))
 
 # paths
-gkey_txt <- "~/private/google-maps-api-key_bdbest-csuci-invite.txt"
 pts_csv <- here("data/pts.csv")
 
-register_google(readLines(gkey_txt))
-
-# create pts_csv
-if (!file.exists(pts_csv)){
-  pts_df <- tribble(
-    ~place,
-    "California State University Channel Islands",
-    "Santa Barbara, CA") %>% 
-    mutate_geocode(place)
-  
-  write_csv(pts_df, pts_csv)
-}
-pts_df <- read_csv(pts_csv)
-
-# geocode any missing places
-pts_todo <- filter(pts_df, is.na(lon), is.na(lat))
-if (nrow(pts_todo)>0){
-  pts_df <- rbind(
-    pts_df %>% 
-      filter(!is.na(lon) & !is.na(lat)),
-    pts_todo %>% 
-      mutate_geocode(place))
-}
-
-# convert to points
-pts <- pts_df %>% 
-  st_as_sf(coords = c("lon", "lat"), crs=4326)
-```
-
-```{r mapedit, eval=F}
-# only run this R chunk to move markers
-pts <- editFeatures(places, label=~place)
-pts_df <- pts %>% 
-  mutate(
-    lon = st_coordinates(geometry)[1,],
-    lat = st_coordinates(geometry)[1,]) %>% 
-  st_drop_geometry()
-write_csv(pts_df, pts_csv)
+# read csv, convert to points
+pts <- read_csv(pts_csv) %>% 
+  st_as_sf(
+    coords = c("lon", "lat"), remove=F, 
+    crs=4326)
 ```
 
 ### **Welcome** {data-commentary-width=400}
 
-```{r}
-leaflet(pts) %>% 
-  addProviderTiles(
-    providers$Stamen.Watercolor,
-    options = providerTileOptions(opacity=0.3)) %>% 
-  addMarkers(
-    label = ~ place)
+```{r map-all}
+map_all(pts)
 ```
 
 *** 
 
-Ahoy Mateys!
+Rrrrr! Ahoy Mateys! I be talking like a pirate to try and 'hook' you into using the scientific programming language **R** for applying _**data science**_ to _**environmental**_ problem solving.
 
-Welcome to a reel of research highlights for Dr. Ben Best.
+
+
+On the map are a few places I'll demonstrate how I applied spatial and statistical techniques to report and solve environmental issues, particularly in the oceans.
+
+I made this little highlights site using Rmarkdown:
 
 ```{r}
-vembedr::embed_vimeo(178485416, width=382)
+embed_vimeo(178485416, width=382)
 ```
-
-
-https://vimeo.com/
 
 ### **Route** ships around whale hotspots {data-commentary-width=400}
 
@@ -103,28 +67,42 @@ Some commentary about Frame 2.
 For more see [EcoQuants](https://ecoquants.com/app/routing/).
 
 ```{r}
-shiny::absolutePanel(
-  leaflet(pts, width=382, height=200) %>% 
-    addProviderTiles(
-      providers$Stamen.Watercolor,
-      options = providerTileOptions(opacity=0.3)) %>% 
-    addMarkers(
-      label = ~ place) %>% 
-    addMiniMap(
-      tiles = providers$Stamen.Watercolor,
-      toggleDisplay = TRUE), bottom=0)
+map_feature("routing")
 ```
 
+### **Site** offshore wind energy responsibly
 
-### Frame 3  {#frame3}
+<iframe style="position: absolute; width: 100%; height: 100%; border: none" src='http://shiny.env.duke.edu/bbest/siting/'></iframe>
 
-```{r}
-plot(1:10)
+*** 
+
+Click on a country to freeze the flower plot to that country in the upper right and explore the country goal scores in the flower plot.
+
+
+### **Ocean Health Index** {data-commentary-width=200} 
+
+<iframe style="position: absolute; width: 100%; height: 100%; border: none" src='https://ecoquants.shinyapps.io/ohi-global/'></iframe>
+
+*** 
+
+The Ocean Health Index quantifies sustainable use of the oceans globally.
+
+Click on a country to freeze the flower plot to that country in the upper right and explore the country goal scores in the flower plot.
+
+
+### **Resources** {data-commentary-width=400} 
+
+```{r map-all-end}
+map_all(pts)
 ```
 
 *** 
 
-Some commentary about Frame 3. 
+To explore further:
+
+```{r}
+vembedr::embed_vimeo(97466638, width=382)
+```
 
 
 
