@@ -1,7 +1,6 @@
-place,lon,lat,key,project_title,study_area,description,url
-California State University Channel Islands,-119.0434218,34.1620531,csuci,NA,NA,NA,NA
-"Santa Barbara, CA",-119.6981901,34.4208305,,NA,NA,NA,NA
-Queen Charlotte Sound,-128.8606232,51.8573226,routing,**Route** ships around whale hotspots,British Columbia,NA,NA
-Hudson Canyon,-72.2,39.45,siting,**Site** offshore wind energy responsibly,U.S. Mid-Atlantic,NA,NA
-Santa Barbara Channel,-119.89,34.241944,ship-cards,Ship Report Cards,NA,for Whale Advisory Zones,NA
-"Dakar, Senegal",-17.4676861,14.716677,sdg14,SDG14 Reports,NA,NA,NA
+place,lon,lat,key,popup
+Queen Charlotte Sound,-128.8606232,51.8573226,routing,**Route** ships
+Hudson Canyon,-72.2,39.45,siting,**Site** offshore wind
+Santa Barbara Channel,-119.89,34.241944,ship-cards,Monitor **ship speeds**
+Florida Keys National Marine Sanctuary,-83.1112798,24.4269857,info-fk,Use **infographics**
+United States,-95.712891,37.09024,ohi,Calculate **ocean health** globally

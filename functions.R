@@ -35,7 +35,7 @@ map_all <- function(pts){
   
   pts = pts %>% 
     mutate(
-      content = map_chr(project_title, md_to_html))
+      content = map_chr(popup, md_to_html))
   
   leaflet(pts) %>% 
     addProviderTiles(
@@ -43,7 +43,9 @@ map_all <- function(pts){
       options = providerTileOptions(
         opacity=0.3)) %>% 
     addMarkers(popup = ~content) %>% 
-    addPopups(popup = ~content)
+    addPopups(
+      popup = ~content,
+      options = popupOptions(closeButton=F))
 }
 
 modal_parts <- function(id, size = "large"){

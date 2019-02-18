@@ -1,5 +1,5 @@
 ---
-title: "Environmental Data Science Lab - Research Highlights"
+title: "EcoQuants Lab — Research Highlights"
 output: 
   flexdashboard::flex_dashboard:
     storyboard: true
@@ -14,7 +14,7 @@ editor_options:
 library(flexdashboard)
 ```
 
-```{r load}
+```{r load, cache=FALSE}
 library(tidyverse)
 library(leaflet)
 library(mapview)
@@ -46,13 +46,32 @@ map_all(pts)
 
 *** 
 
-Ahoy Mateys! I be talking like a pirate because I use the scientific programming language **R** to solve _**environmental problems**_, and I want to get you _hooked_ on _**data science**_.
+Ahoy Mateys! I be talking like a pirate because I use the scientific programming language **R** to solve _**environmental problems**_, and I want to get you _hooked_ on _**data science**_!
 
 ```{r}
 embed_youtube("AG4YGh1FjFc", width=300)
 ```
 
-Here are few highlights of research I do on this site.
+On this site you can sequence through a few interactive applications from my research that highlight the possibilities with these fun tools.
+
+Here's a bit more about me and my company:
+
+* [Ben Best, PhD](http://benbestphd.com)
+* [EcoQuants LLC](https://ecoquants.com)
+
+### Monitor **ship speeds** to avoid whale strikes {data-commentary-width=414}
+
+<iframe style="position: absolute; width: 100%; height: 100%; border: none" src='http://ecoquants.com/ship-cards/'></iframe>
+
+*** 
+
+<center>
+![](https://sanctuaries.noaa.gov/protect/shipstrike/images/whales2.jpg)
+</center>
+
+`r icon("info")` **Background**. In the fall of 2007, five blue whale fatalities in the Santa Barbara Channel were presumed to be caused by commercial vessel strikes. Whale Advisory Zones were seasonally established during presence of the endangered blue whales in the area to advise commercial vessels to reduce their speed to 10 knots or below. Various outreach campaigns are underway to change vessel behavior, and compliance can be tracked by monitoring ship locations through their location transmitted via the Automatic Identification System (AIS) mandated for vessel safety for all ships greater than 300 tons. These report cards are under development to facilitate this process.
+
+`r icon("rocket")` **Try it out**. From the directory of ships, sort on different columns (e.g. `pct_dist_ok` for percent distance travelled at safe speeds) and click on a ship's name to view its report card. In the map zoom into areas in exceedence of the advisory. Click back to the Directory in the top menu. Notice different color codings based on `pct_dist_ok`.
 
 ### **Route** ships around whale hotspots {data-commentary-width=318}
 
@@ -77,7 +96,7 @@ Here are few highlights of research I do on this site.
 ![](https://ecoquants.com/images/app_siting_card_300x300_100dpi.png)
 </center>
 
-`r icon("info")` **Background**. Development of offshore wind energy promises to reduce greenhouse gas emissions, but environmental compliance has been estimated to take 7-10 years and only one production facility exists in the U.S. (in Block Island, NJ). Seabirds can collide or be displaced by the long-term operation of wind turbines. In contrast, cetaceans are most effected by the acoustic impact of pile driving during construction. Using existing seabird densities and recently estimated cetacean density surfaces ([Roberts, Best et al 2016](http://www.nature.com/articles/srep22615)), this decision framework maps the overall utility of wind profitability versus bird sensitivity. Clicking on any given pixel in the map pops up the cetacean sensitivity over the year for that site, thus highlighting the optimal month of the year to pile drive.
+`r icon("info")` **Background**. Development of offshore wind energy promises to reduce greenhouse gas emissions, but siting and construction of these offshore structures needs be done in an environmentally responsible manner. Seabirds can collide or be displaced during the long-term operation of wind turbines. Cetaceans are most effected by the acoustic impact of pile driving during construction. Using existing seabird densities and recently estimated cetacean density surfaces ([Roberts, Best et al 2016](http://www.nature.com/articles/srep22615)), this decision framework maps the overall utility of wind profitability versus bird sensitivity. Clicking on any given pixel in the map pops up the cetacean sensitivity over the year for that site, thus highlighting the optimal month of the year to pile drive.
 
 <center>
 ```{r}
@@ -86,9 +105,9 @@ modal_btn("siting_framework")
 ```
 </center>
 
-`r icon("rocket")` **Try it out**. Hover your cursor over the tradeoff plot, get the lasso tool and select optimal sites in the upper right quadrant. For the now highlighted pixels on the map, click on one of the pixels to determine the best month to pile drive based on endangered whales and dolphins being least present.
+`r icon("rocket")` **Try it out**. Hover your cursor just above the tradeoff plot to see the menu of tools, click on the lasso tool and select optimal sites in the upper right quadrant of the plot (draw while click and holding). For the now highlighted pixels on the map, click on one of the pixels to determine the best month to pile drive based on endangered whales and dolphins being least present.
 
-### Calculate **Ocean Health Index** globally {data-commentary-width=318}
+### Calculate **ocean health** globally {data-commentary-width=318}
 
 <iframe style="position: absolute; width: 100%; height: 100%; border: none" src='https://ecoquants.shinyapps.io/ohi-global/'></iframe>
 
@@ -109,59 +128,43 @@ modal_btn("ohi_framework")
 
 `r icon("rocket")` **Try it out**. Click on a country to freeze the flower plot to that country in the upper right and explore the country goal scores in the flower plot.
 
-### Predict **cetacean densities** based on habitat {data-commentary-width=200} 
+### Use **infographics** to report on ecosystem status
 
-<iframe style="position: absolute; width: 100%; height: 100%; border: none" src='https://www.arcgis.com/apps/MapJournal/index.html?appid=0ac67160a23f45f6859401786f8bf94b'></iframe>
-
-*** 
-
-[Habitat-based cetacean density models for the U.S. Atlantic and Gulf of Mexico | Duke MGEL](http://seamap.env.duke.edu/models/Duke-EC-GOM-2015/)
-
-Citation: Roberts JJ, Best BD, Mannocci L, Fujioka E, Halpin PN, Palka DL, Garrison LP, Mullin KD, Cole TVN, Khan CB, McLellan WM, Pabst DA, Lockhart GG (2016) [Habitat-based cetacean density models for the U.S. Atlantic and Gulf of Mexico](http://www.nature.com/articles/srep22615). _Scientific Reports_ 6: 22615. doi: 10.1038/srep22615. (Download)
-
-tags: #sdg14 #decision-framework #whales #birds
-
-### Report on UN SDG14 **Life in the Sea** {data-commentary-width=200} 
-
-<iframe style="position: absolute; width: 100%; height: 100%; border: none" src='https://ecoquants.shinyapps.io/ohi-global/'></iframe>
+<iframe style="position: absolute; width: 100%; height: 100%; border: none" src='https://marinebon.github.io/cr-metrics/coral-reef.html'></iframe>
 
 *** 
 
-The United Nation's **Sustainable Development Goal 14** Life in the Sea
+<center>
+![](https://ecoquants.com/images/app_infographic_card_300x300_100dpi.png)
+</center>
 
-tags: #sdg14 #decision-framework #whales #birds
+`r icon("info")` **Background**. Species and habitats have complex interactions with each other, the environment and humans. Communicating the state of ecosystem can be facilitated by  infographics describing elements as silhouettes, which can be clicked on to pop up a time series of abundance. Similar infographics are being developed for the National Marine Sanctuaries and Integrated Ecosystem Assessement regions.
 
-### Monitor **ship speeds** to avoid whale strikes {data-commentary-width=200} 
+`r icon("rocket")` **Try it out**. Click on different species to see time series of outputs.
 
-<iframe style="position: absolute; width: 100%; height: 100%; border: none" src='http://ecoquants.com/ship-cards/'></iframe>
+### Dive deeper with **resources** {data-commentary-width=400} 
 
-*** 
-
-**Ship Cards** speeding through whale strike advisories
-
-tags: #reporting #whales #shipping
-
-### **Resources** {data-commentary-width=400} 
-
-```{r map-all-end}
-map_all(pts)
-```
-
-*** 
-
-Here are a couple of the tools I use in R to create apps and generate reports.
-
-#### Rmarkdown reports
+**Rmarkdown reports**:
 
 ```{r}
 embed_vimeo(178485416, width=382)
 ```
 
-#### Shiny applications
+**Shiny applications**:
 
 ```{r}
 vembedr::embed_vimeo(97466638, width=382)
 ```
+
+*** 
+
+`r icon("info")` **Background**. Here are short videos about a couple tools for creating applications and generating reports or websites like seen here. These open data science tools have been demonstrated to produce better science in less time ([Lowndes, Best et al 2017](https://www.nature.com/articles/s41559-017-0160)).
+
+`r icon("rocket")` **Try it out**. After some initial training, these tools are surprisingly easy and fun to use! Here's more resources for you to dive into:
+
+* [Environmental Informatics](http://ucsb-bren.github.io/env-info/) course
+* [Interactive Reporting](https://ecoquants.com/nps-r-workshop/) workshop
+
 
 
 
