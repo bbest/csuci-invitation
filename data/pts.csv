@@ -1,6 +1,6 @@
-place,lon,lat,key,popup
-Queen Charlotte Sound,-128.8606232,51.8573226,routing,**Route** ships
-Hudson Canyon,-72.2,39.45,siting,**Site** offshore wind
-Santa Barbara Channel,-119.89,34.241944,ship-cards,Monitor **ship speeds**
-Florida Keys National Marine Sanctuary,-83.1112798,24.4269857,info-fk,Use **infographics**
-United States,-95.712891,37.09024,ohi,Calculate **ocean health** globally
+place,lon,lat,key,popup,img
+Queen Charlotte Sound,-128.8606232,51.8573226,routing,**Route** ships &nbsp;&nbsp;&nbsp;&nbsp;,routing_sm.png
+Hudson Canyon,-72.2,39.45,siting,**Site** offshore wind,siting_sm.png
+Santa Barbara Channel,-119.89,34.241944,ship-cards,Monitor **ship speeds**,shipr_sm.png
+Florida Keys National Marine Sanctuary,-83.1112798,24.4269857,info-fk,Use **infographics**,infographic_sm.png
+United States,-95.712891,37.09024,ohi,Calculate **ocean <br>health** globally,ohi_sm.png

@@ -6,6 +6,7 @@ output:
     social: menu
     source_code: https://github.com/bbest/csuci-invite/blob/master/docs/index.Rmd
     css: styles.css
+    self_contained: false
 editor_options: 
   chunk_output_type: console
 ---
@@ -117,10 +118,10 @@ modal_btn("siting_framework")
 ![](https://ecoquants.com/images/app_ohi_card_300x300_100dpi.png)
 </center>
 
-`r icon("info")` **Background**. The Ocean Health Index quantifies sustainable use of the oceans globally across 10 broad goals ([Halpern, ..., Best et al 2012](https://www.nature.com/articles/nature11397)). This application helps users visualize the many levels of information as maps, goals as petals in the flower plot, time series and tables.
+`r icon("info")` **Background**. The Ocean Health Index (OHI) quantifies sustainable use of the oceans globally across 10 broad goals ([Halpern, ..., Best et al 2012](https://www.nature.com/articles/nature11397)). This application helps users visualize the many levels of information as maps, goals as petals in the flower plot, time series and tables.
 
 <center>
-```{r}
+```{r, cache=F}
 modal_id("ohi_framework")
 modal_btn("ohi_framework")
 ```

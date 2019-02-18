@@ -30,12 +30,14 @@ map_all <- function(pts){
   
   md_to_html <- function(md){
     if(is.na(md)) md = "NA"
-    HTML(markdownToHTML(text= md, fragment.only=T))
+    HTML(markdownToHTML(text=md, fragment.only=T))
   }
   
   pts = pts %>% 
     mutate(
-      content = map_chr(popup, md_to_html))
+      md      = glue("{popup}<br>![](img/{img})"),
+      #content = map_chr(md, md_to_html))
+      content = map_chr(md, md_to_html))
   
   leaflet(pts) %>% 
     addProviderTiles(
@@ -45,13 +47,17 @@ map_all <- function(pts){
     addMarkers(popup = ~content) %>% 
     addPopups(
       popup = ~content,
-      options = popupOptions(closeButton=F))
+      options = popupOptions(
+        #maxWidth = 500, minWidth = 300,
+        closeButton=F))
 }
 
 modal_parts <- function(id, size = "large"){
   #id        = "siting_framework"
   
-  title     = str_replace_all(id, "_", " ") %>% str_to_title()
+  title     = str_replace_all(id, "_", " ") %>% 
+    str_to_title() %>% 
+    str_replace_all("Ohi", "OHI")
   btn_title = glue("View {title}")
   path      = here(glue("docs/modal/{id}.md"))
   
