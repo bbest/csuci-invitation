@@ -46,8 +46,6 @@ map_all(pts)
 
 Rrrrr! Ahoy Mateys! I be talking like a pirate to try and 'hook' you into using the scientific programming language **R** for applying _**data science**_ to _**environmental**_ problem solving.
 
-
-
 On the map are a few places I'll demonstrate how I applied spatial and statistical techniques to report and solve environmental issues, particularly in the oceans.
 
 I made this little highlights site using Rmarkdown:
@@ -66,6 +64,8 @@ Some commentary about Frame 2.
 
 For more see [EcoQuants](https://ecoquants.com/app/routing/).
 
+tags: #decision-framework #connectivity #whales
+
 ```{r}
 map_feature("routing")
 ```
@@ -76,8 +76,7 @@ map_feature("routing")
 
 *** 
 
-Click on a country to freeze the flower plot to that country in the upper right and explore the country goal scores in the flower plot.
-
+tags: #renewable-energy #decision-framework #whales #birds
 
 ### **Ocean Health Index** {data-commentary-width=200} 
 
@@ -89,6 +88,27 @@ The Ocean Health Index quantifies sustainable use of the oceans globally.
 
 Click on a country to freeze the flower plot to that country in the upper right and explore the country goal scores in the flower plot.
 
+tags: #decision-framework #whales #birds
+
+### **Sustainable Development Goal 14** {data-commentary-width=200} 
+
+<iframe style="position: absolute; width: 100%; height: 100%; border: none" src='https://ecoquants.shinyapps.io/ohi-global/'></iframe>
+
+*** 
+
+**Sustainable Development Goal 14** Life in the Sea
+
+tags: #sdg14 #decision-framework #whales #birds
+
+### **Ship Cards** {data-commentary-width=200} 
+
+<iframe style="position: absolute; width: 100%; height: 100%; border: none" src='http://ecoquants.com/ship-cards/'></iframe>
+
+*** 
+
+**Ship Cards** speeding through whale strike advisories
+
+tags: #reporting #whales #shipping
 
 ### **Resources** {data-commentary-width=400} 
 
