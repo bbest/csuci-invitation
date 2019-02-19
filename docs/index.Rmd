@@ -53,9 +53,13 @@ Ahoy Mateys! I be talking like a pirate because I use the scientific programming
 embed_youtube("AG4YGh1FjFc", width=300)
 ```
 
-On this site you can sequence through a few interactive applications from my research that highlight the possibilities with these fun tools.
+I invite you to explore these applications. A bit of background is provided for each, but the real point is to try it out!
 
-Here's a bit more about me and my company:
+Please let me (<ben@ecoquants.com>) know if you have any problems, questions or suggestions.
+
+`r icon("exclamation-triangle")` This site can be difficult to interact with on a phone, so a desktop browser is recommended.
+
+By the way, here's a bit more about me and my company:
 
 * [Ben Best, PhD](http://benbestphd.com)
 * [EcoQuants LLC](https://ecoquants.com)
